@@ -22,6 +22,7 @@ class TelegramUser extends Authenticatable
     protected $casts = [
         'last_login_date' => 'datetime',
         'last_daily_booster_use' => 'datetime',
+        'last_daily_cipher_redeem' => 'date',
     ];
 
     public function referrals()

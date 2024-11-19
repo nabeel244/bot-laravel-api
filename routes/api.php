@@ -9,7 +9,7 @@ use App\Http\Controllers\ReferralTaskController;
 use App\Http\Controllers\TelegramUserController;
 use App\Http\Controllers\UserMissionController;
 use App\Http\Controllers\UserTaskController;
-
+use App\Http\Controllers\DailyCipherController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -105,4 +105,6 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::get('levels', [LevelController::class, 'index']);
+
+    Route::post('daily-cipher', [DailyCipherController::class, 'claim']);
 });
