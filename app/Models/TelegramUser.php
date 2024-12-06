@@ -179,4 +179,10 @@ class TelegramUser extends Authenticatable
             $this->save();
         }
     }
+
+
+    public function unlockedCards()
+    {
+        return $this->hasMany(UnlockedComboCard::class, 'user_id');
+    }
 }

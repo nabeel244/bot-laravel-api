@@ -10,6 +10,8 @@ use App\Http\Controllers\TelegramUserController;
 use App\Http\Controllers\UserMissionController;
 use App\Http\Controllers\UserTaskController;
 use App\Http\Controllers\DailyCipherController;
+use App\Http\Controllers\DailyComboController;
+use App\Http\Controllers\MarketController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -107,4 +109,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('levels', [LevelController::class, 'index']);
 
     Route::post('daily-cipher', [DailyCipherController::class, 'claim']);
+
+///////////Market Api ////
+Route::get('market/cards', [MarketController::class, 'getMarketCards']);
+Route::post('market/click', [MarketController::class, 'clickCard']);
+
+
+// daily combo api ///
+Route::get('daily-combo/cards', [DailyComboController::class, 'getDailyCards']);
+Route::post('daily-combo/unlock-card', [DailyComboController::class, 'unlockCard']);
+Route::post('daily-combo/upload-cards', [DailyComboController::class, 'uploadCards']);
 });
