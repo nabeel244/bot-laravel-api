@@ -12,6 +12,7 @@ use App\Http\Controllers\UserTaskController;
 use App\Http\Controllers\DailyCipherController;
 use App\Http\Controllers\DailyComboController;
 use App\Http\Controllers\MarketController;
+use App\Http\Controllers\ExchangeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -119,4 +120,9 @@ Route::post('market/click', [MarketController::class, 'clickCard']);
 Route::get('daily-combo/cards', [DailyComboController::class, 'getDailyCards']);
 Route::post('daily-combo/unlock-card', [DailyComboController::class, 'unlockCard']);
 Route::post('daily-combo/upload-cards', [DailyComboController::class, 'uploadCards']);
+
+
+// become Exchange CEO
+Route::get('exchanges', [ExchangeController::class, 'index']);
+Route::post('sign-contract', [ExchangeController::class, 'signContract']);
 });
