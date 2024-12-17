@@ -39,22 +39,27 @@ class DailyComboController extends Controller
     return response()->json(['message' => 'Cards uploaded successfully']);
 }
 
-    public function getDailyCards(Request $request)
+public function getDailyCards(Request $request)
 {
     $user = $request->user(); // Assuming `auth:api` middleware is applied
     $cards = DailyComboCard::where('date', date('Y-m-d'))->get();
+
     // Add unlocked status for each card
     $unlockedCards = UnlockedComboCard::where('user_id', $user->id)
         ->pluck('daily_combo_card_id')
-        ->toArray(); 
+        ->toArray();
 
     $cards = $cards->map(function ($card) use ($unlockedCards) {
         $card->is_unlocked = in_array($card->id, $unlockedCards);
         return $card;
     });
 
-    return response()->json(['cards' => $cards]);
+    return response()->json([
+        'cards' => $cards,
+        'claimed_rewards' => $unlockedCards, // Add this
+    ]);
 }
+
 
     public function unlockCard(Request $request)
 {
