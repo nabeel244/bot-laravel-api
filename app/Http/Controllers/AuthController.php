@@ -49,4 +49,33 @@ class AuthController extends Controller
             'token' => $token->plainTextToken,
         ]);
     }
+
+    public function updateUser(Request $request)
+    {
+        // Validate incoming data
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:telegram_users,username,' . auth()->id(),
+        ]);
+
+        // Get the currently authenticated user
+        $user = $request->user();
+
+        // Ensure the user exists in TelegramUser model
+        if (!$user instanceof TelegramUser) {
+            return response()->json([
+                'message' => 'Authenticated user is not valid',
+            ], 403);
+        }
+
+        // Update user details
+        $user->update($validatedData);
+
+        // Return success response
+        return response()->json([
+            'message' => 'User updated successfully',
+            'user' => $user,
+        ], 200);
+    }
 }

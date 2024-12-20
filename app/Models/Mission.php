@@ -9,10 +9,10 @@ class Mission extends Model
 {
     use HasFactory;
 
-    public function getImageAttribute($value)
-    {
-        return $value ? env("APP_STORAGE_URL", "/") . '/storage' . $value : null;
-    }
+    // public function getImageAttribute($value)
+    // {
+    //     return $value ? env("APP_STORAGE_URL", "/") . '/storage' . $value : null;
+    // }
 
     public function levels()
     {

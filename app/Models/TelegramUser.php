@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #[ObservedBy(TelegramUserObserver::class)]
 class TelegramUser extends Authenticatable
@@ -184,5 +185,11 @@ class TelegramUser extends Authenticatable
     public function unlockedCards()
     {
         return $this->hasMany(UnlockedComboCard::class, 'user_id');
+    }
+
+
+    public function selectedExchange(): BelongsTo
+    {
+        return $this->belongsTo(Exchange::class, 'selected_exchange_id');
     }
 }
