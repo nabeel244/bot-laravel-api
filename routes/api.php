@@ -32,7 +32,7 @@ Route::get('/popups', [PopupController::class, 'index']);
 
 // Protected routes
 Route::middleware('auth:sanctum')->group(function () {
-
+    Route::put('user/update', [AuthController::class, 'updateUser']);
     Route::get('referred-users', [TelegramUserController::class, 'referredUsers']);
 
     // Clicker game routes
