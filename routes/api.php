@@ -23,9 +23,7 @@ use App\Http\Controllers\ExchangeController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('/health', function () {
-    return response()->json(['status' => 'ok', 'message' => 'Application is running']);
-});
+
 
 // Public routes
 Route::post('/auth/telegram-user', [AuthController::class, 'telegramUser']);
