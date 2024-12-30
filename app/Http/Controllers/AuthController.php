@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function getAllUsers()
+    {
+        $users = TelegramUser::all(); // Fetch all users
+        return response()->json(['status' => 'ok', 'users' => $users]);
+    }
     public function telegramUser(Request $request)
     {
         $validated = $request->validate([
