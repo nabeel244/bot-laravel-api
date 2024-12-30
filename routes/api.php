@@ -32,7 +32,7 @@ Route::post('/auth/telegram-user', [AuthController::class, 'telegramUser']);
 Route::get('/popups', [PopupController::class, 'index']);
 
 // Protected routes
-// Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::put('user/update', [AuthController::class, 'updateUser']);
     Route::get('referred-users', [TelegramUserController::class, 'referredUsers']);
 
@@ -126,4 +126,4 @@ Route::post('daily-combo/upload-cards', [DailyComboController::class, 'uploadCar
 // become Exchange CEO
 Route::get('exchanges', [ExchangeController::class, 'index']);
 Route::post('sign-contract', [ExchangeController::class, 'signContract']);
-// });
+});
