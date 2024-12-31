@@ -15,8 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('cipher:generate')->everyMinute();
-        $schedule->command('cipher:generate')->dailyAt('00:00');
+        $schedule->command('cipher:generate')->everyMinute();
+        // $schedule->command('cipher:generate')->dailyAt('00:00');
         // $schedule->command('cipher:generate')->daily();
     }
 
