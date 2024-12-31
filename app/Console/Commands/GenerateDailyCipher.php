@@ -39,7 +39,7 @@ class GenerateDailyCipher extends Command
             'valid_for' => Carbon::today(), // Set date to today
         ]);
     
-        Mail::to('nabeelmuhammad243@gmail.com')->send(new DailyCipherCreated($cipherData));
+        Mail::to('amarkovac76@gmail.com')->send(new DailyCipherCreated($cipherData));
         $this->info('Daily cipher code generated.');
     }
 
